@@ -7,5 +7,7 @@ public interface IUserDAO {
 	public User validUser(String username, String password);
 	
 	public User findByUsername(String username);
+	
+	public User insert(User u);
 
 }
