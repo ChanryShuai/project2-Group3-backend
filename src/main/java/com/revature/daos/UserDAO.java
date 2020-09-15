@@ -1,6 +1,9 @@
 package com.revature.daos;
 
+
+
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
@@ -29,4 +32,13 @@ public class UserDAO implements IUserDAO {
 		return u;
 	}
 
+	
+	@Override
+	public User insert(User u) {
+		Session ses = HibernateUtil.getSession();
+		Transaction tr = ses.beginTransaction();
+		ses.save(u);
+		tr.commit();
+		return u;
+	}
 }

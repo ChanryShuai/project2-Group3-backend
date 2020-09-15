@@ -12,7 +12,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-</welcome-file-list>
+
 	<filter>
 		<filter-name>Cors</filter-name>
 		<filter-class>com.revature.web.filters.CorsFilter</filter-class>
