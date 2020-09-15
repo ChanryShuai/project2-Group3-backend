@@ -1,12 +1,16 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
+
 /*User model class: including user credentials, user info, and user win/loss records*/
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.revature.utils.PasswordUtil;
@@ -17,7 +21,6 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
 	private static final long serialVersionUID = 1L;
 	private int userId;
 
@@ -41,7 +44,7 @@ public class User {
 
 	@Column(name = "user_record")
 	private double userRecord;
-
+	
 	public User() {
 		super();
 	}
