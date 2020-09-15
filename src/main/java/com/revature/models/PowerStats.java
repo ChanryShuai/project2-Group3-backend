@@ -7,12 +7,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="powerstats")
 public class PowerStats {
-	
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="powerstats_id")
-	
-	private static final long serialVersionUID = 1L;
 	private int powerstatsId;
 	
 	@Column(name="intelligence")

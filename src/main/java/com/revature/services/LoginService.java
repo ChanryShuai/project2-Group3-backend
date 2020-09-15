@@ -9,29 +9,23 @@ import com.revature.models.User;
 
 public class LoginService {
 
-<<<<<<< HEAD
+	private static final Logger log = LogManager.getLogger(UserDAO.class);
+	private static final Logger Log = LogManager.getLogger(LoginService.class);
+
+	UserDAO udao = new UserDAO();
+
 	public boolean login(LoginDTO l) {
-		return false;
-	}
-=======
-private static final Logger log = LogManager.getLogger(UserDAO.class);
-private static final Logger Log = LogManager.getLogger(LoginService.class);
->>>>>>> 42746780744909459dc32523325fcb96c22d57c0
+		log.info("@login in LoginService");
+		User u = udao.findByUsername(l.username);
+		StringBuilder tempPassword = new StringBuilder();
+		tempPassword.append(l.password.hashCode());
+		String hashPassword = tempPassword.toString();
 
-UserDAO udao = new UserDAO();
+		if ((u != null) && hashPassword.equals(u.getPassword())) {
+			return true;
 
-public boolean login(LoginDTO l) { 
-	log.info("@login in LoginService");
-	User u = udao.findByUsername(l.username);
-	StringBuilder tempPassword = new StringBuilder();
-	tempPassword.append(l.password.hashCode());
-	String hashPassword = tempPassword.toString();
-	
-	if((u!=null) && hashPassword.equals(u.getPassword())) {
-		return true;
-	
-	}else {
-	return false; 
+		} else {
+			return false;
+		}
 	}
-}
 }

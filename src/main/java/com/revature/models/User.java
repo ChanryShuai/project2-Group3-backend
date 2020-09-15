@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.revature.utils.PasswordUtil;
@@ -19,15 +18,17 @@ import com.revature.utils.PasswordUtil;
 @Table(name = "users")
 public class User {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private static final long serialVersionUID = 1L;
+	@Column(name="user_id")
 	private int userId;
 
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
-	@Column(name = "password", nullable = false)
+	@Column(name = "userpass", nullable = false)
 	private String password;
 
 	@Column(name = "first_name", nullable = false)

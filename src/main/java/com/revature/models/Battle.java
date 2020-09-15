@@ -9,30 +9,29 @@ import javax.persistence.*;
 @Entity
 @Table(name="battle")
 public class Battle implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="battle_id")
-	private static final long serialVersionUID = 1L;
 	private int battleId;
 
-	//TALK WITH CHANRY ABOUT IF WE NEED THIS TO HAVE A JOIN
 	@Column(name="outcomes")
 	private int outcomes;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="id", nullable=false)
-	@Column(name="avatar_id", nullable=false, unique=true)
+	@JoinColumn(name="avatar_id", nullable=false)
+	//@Column(name="avatar_id", nullable=false, unique=true)
 	private Superhero avatarId;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="id", nullable=false)
-	@Column(name="opponent_id",nullable=false, unique=true)
+	@JoinColumn(name="opponent_id", nullable=false)
+	//@Column(name="opponent_id",nullable=false, unique=true)
 	private Superhero opponentId;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
-	@Column(name="user_id",nullable=false, unique=true)
+	//@Column(name="user_id",nullable=false, unique=true)
 	private User userId;
 
 	public Battle(int battleId, int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
