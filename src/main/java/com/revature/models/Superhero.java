@@ -17,8 +17,7 @@ public class Superhero {
 	private String name;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="id", nullable=false)
-	@Column(name="powerstats",nullable=false, unique=true)
+	@JoinColumn(name="powerstats_id", nullable=false, unique=true)
 	private PowerStats powerStats;
 	
 	@Column(name="alignment",nullable=false)
@@ -128,7 +127,6 @@ public class Superhero {
 			return false;
 		return true;
 	}
-	
-	
+
 
 }

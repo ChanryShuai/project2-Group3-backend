@@ -7,12 +7,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="powerstats")
 public class PowerStats {
-	
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="powerstats_id")
-	
-	private static final long serialVersionUID = 1L;
 	private int powerstatsId;
 	
 	@Column(name="intelligence")
@@ -37,7 +36,7 @@ public class PowerStats {
 	private int average;
 
 	public PowerStats(int powerstatsId, int intelligence, int strength, int speed, int durability, int power,
-			int combat, int average) {
+			int combat) {
 		super();
 		this.powerstatsId = powerstatsId;
 		this.intelligence = intelligence;
@@ -46,10 +45,10 @@ public class PowerStats {
 		this.durability = durability;
 		this.power = power;
 		this.combat = combat;
-		this.average = average;
+		this.average = (intelligence+strength+speed+durability+power+combat)/5;
 	}
 
-	public PowerStats(int intelligence, int strength, int speed, int durability, int power, int combat, int average) {
+	public PowerStats(int intelligence, int strength, int speed, int durability, int power, int combat) {
 		super();
 		this.intelligence = intelligence;
 		this.strength = strength;
@@ -57,7 +56,7 @@ public class PowerStats {
 		this.durability = durability;
 		this.power = power;
 		this.combat = combat;
-		this.average = average;
+		this.average = (intelligence+strength+speed+durability+power+combat)/5;
 	}
 
 	public PowerStats() {
