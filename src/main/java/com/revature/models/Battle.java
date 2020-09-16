@@ -17,7 +17,7 @@ public class Battle implements Serializable{
 	private int battleId;
 
 	@Column(name="outcomes")
-	private int outcomes;
+	private String outcomes;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="avatar_id", nullable=false)
@@ -34,40 +34,92 @@ public class Battle implements Serializable{
 	//@Column(name="user_id",nullable=false, unique=true)
 	private User userId;
 
-	public Battle(int battleId, int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
-		super();
-		this.battleId = battleId;
-		this.outcomes = outcomes;
-		this.avatarId = avatarId;
-		this.opponentId = opponentId;
-		this.userId = userId;
-	}
-
-	public Battle(int outcomes, Superhero avatarId, Superhero opponentId, User userId) {
-		super();
-		this.outcomes = outcomes;
-		this.avatarId = avatarId;
-		this.opponentId = opponentId;
-		this.userId = userId;
-	}
-
 	public Battle() {
 		super();
 	}
 
-	public int getbattleId() {
+	public Battle(int battleId, String outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+		super();
+		this.battleId = battleId;
+		this.outcomes = outcomes;
+		this.avatarId = avatarId;
+		this.opponentId = opponentId;
+		this.userId = userId;
+	}
+
+	public Battle(String outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+		super();
+		this.outcomes = outcomes;
+		this.avatarId = avatarId;
+		this.opponentId = opponentId;
+		this.userId = userId;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((avatarId == null) ? 0 : avatarId.hashCode());
+		result = prime * result + battleId;
+		result = prime * result + ((opponentId == null) ? 0 : opponentId.hashCode());
+		result = prime * result + ((outcomes == null) ? 0 : outcomes.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Battle other = (Battle) obj;
+		if (avatarId == null) {
+			if (other.avatarId != null)
+				return false;
+		} else if (!avatarId.equals(other.avatarId))
+			return false;
+		if (battleId != other.battleId)
+			return false;
+		if (opponentId == null) {
+			if (other.opponentId != null)
+				return false;
+		} else if (!opponentId.equals(other.opponentId))
+			return false;
+		if (outcomes == null) {
+			if (other.outcomes != null)
+				return false;
+		} else if (!outcomes.equals(other.outcomes))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Battle [battleId=" + battleId + ", outcomes=" + outcomes + ", avatarId=" + avatarId + ", opponentId="
+				+ opponentId + ", userId=" + userId + "]";
+	}
+
+	public int getBattleId() {
 		return battleId;
 	}
 
-	public void setbattleId(int battleId) {
+	public void setBattleId(int battleId) {
 		this.battleId = battleId;
 	}
 
-	public int getOutcomes() {
+	public String getOutcomes() {
 		return outcomes;
 	}
 
-	public void setOutcomes(int outcomes) {
+	public void setOutcomes(String outcomes) {
 		this.outcomes = outcomes;
 	}
 
@@ -95,55 +147,10 @@ public class Battle implements Serializable{
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "battle [battleId=" + battleId + ", outcomes=" + outcomes + ", avatarId=" + avatarId + ", opponentId="
-				+ opponentId + ", userId=" + userId + "]";
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
+	
+	
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((avatarId == null) ? 0 : avatarId.hashCode());
-		result = prime * result + battleId;
-		result = prime * result + ((opponentId == null) ? 0 : opponentId.hashCode());
-		result = prime * result + outcomes;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Battle other = (Battle) obj;
-		if (avatarId == null) {
-			if (other.avatarId != null)
-				return false;
-		} else if (!avatarId.equals(other.avatarId))
-			return false;
-		if (battleId != other.battleId)
-			return false;
-		if (opponentId == null) {
-			if (other.opponentId != null)
-				return false;
-		} else if (!opponentId.equals(other.opponentId))
-			return false;
-		if (outcomes != other.outcomes)
-			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		return true;
-	}
-	
-	
-	
 }
