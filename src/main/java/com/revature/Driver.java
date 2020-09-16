@@ -2,13 +2,12 @@ package com.revature;
 
 import com.revature.repositories.IUserDAO;
 import com.revature.repositories.UserDAO;
-=======
+
 import java.util.List;
 
-import com.revature.daos.IUserDAO;
-import com.revature.daos.UserDAO;
+import com.revature.repositories.IUserDAO;
+import com.revature.repositories.UserDAO;
 import com.revature.models.User;
->>>>>>> ca47d2a558e11c78235d25e72bbf7db7b9d47878
 import com.revature.services.*;
 
 public class Driver {
