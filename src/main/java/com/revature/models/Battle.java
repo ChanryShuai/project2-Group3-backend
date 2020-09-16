@@ -20,17 +20,17 @@ public class Battle implements Serializable{
 	@Column(name="outcomes")
 	private int outcomes;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id", nullable=false)
 	@Column(name="avatar_id", nullable=false, unique=true)
 	private Superhero avatarId;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id", nullable=false)
 	@Column(name="opponent_id",nullable=false, unique=true)
 	private Superhero opponentId;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
 	@Column(name="user_id",nullable=false, unique=true)
 	private User userId;

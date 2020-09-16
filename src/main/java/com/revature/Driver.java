@@ -1,7 +1,7 @@
 package com.revature;
 
-import com.revature.daos.IUserDAO;
-import com.revature.daos.UserDAO;
+import com.revature.repositories.IUserDAO;
+import com.revature.repositories.UserDAO;
 import com.revature.services.*;
 
 public class Driver {

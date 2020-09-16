@@ -3,9 +3,9 @@ package com.revature.services;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.daos.UserDAO;
 import com.revature.models.LoginDTO;
 import com.revature.models.User;
+import com.revature.repositories.UserDAO;
 
 public class LoginService {
 

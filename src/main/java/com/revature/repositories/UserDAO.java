@@ -1,13 +1,16 @@
-package com.revature.daos;
+package com.revature.repositories;
 
 
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
+@Repository
 public class UserDAO implements IUserDAO {
 	
 	@Override
@@ -41,4 +44,30 @@ public class UserDAO implements IUserDAO {
 		tr.commit();
 		return u;
 	}
+	
+	@Override
+	public boolean updateUser(User u) {
+	
+		Session ses = HibernateUtil.getSession();
+		
+		try {
+		ses.merge(u);
+		return true;
+		
+	}catch(HibernateException e) {
+		e.printStackTrace();
+		return false;
+	}
+	}
+	
+	@Override
+	public User selectByUserId(int userId) {
+		
+		Session ses = HibernateUtil.getSession();
+		
+		User u = ses.get(User.class, userId);
+		
+		return u;
+	}
+	
 }

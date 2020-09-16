@@ -2,11 +2,10 @@ package com.revature.services;
 
 import com.revature.models.AddSuperheroDTO;
 import com.revature.models.Superhero;
+import com.revature.repositories.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.revature.daos.*;
 
 public class SuperheroService {
 	
@@ -15,7 +14,7 @@ public class SuperheroService {
 	private static final Logger log = LogManager.getLogger(SuperheroService.class);
 	
 	//I JUST MADE EVERYTHING A SET METHOD PULLING FROM THE DTO BECAUSE I AM NOT SURE HOW THE API WORKS WITH METHODS
-	public boolean addReimbursement(AddSuperheroDTO asdto, int id) {
+	public boolean addSuperhero(AddSuperheroDTO asdto, int id) {
 		//log.info("Adding a superhero");
 		Superhero s = new Superhero();
 		s.setId(asdto.id);

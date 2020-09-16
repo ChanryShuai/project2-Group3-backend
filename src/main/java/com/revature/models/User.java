@@ -1,12 +1,18 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
+
 /*User model class: including user credentials, user info, and user win/loss records*/
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.revature.utils.PasswordUtil;
@@ -24,7 +30,7 @@ public class User {
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
-	@Column(name = "password", nullable = false)
+	@Column(name = "user_pass", nullable = false)
 	private String password;
 
 	@Column(name = "first_name", nullable = false)
