@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.Superhero;
@@ -34,7 +35,8 @@ public class SuperheroDAO implements ISuperheroDAO {
 		
 		Session ses = HibernateUtil.getSession();
 		List<Superhero> sList = ses.createQuery("SELECT intelligence, strength, speed, durability, power, combat FROM powerstats " 
-		+ "FROM superheros LEFT JOIN id").list();
+		+ "FROM superheros LEFT JOIN superheros.name, superheros.alignment" 
+		+ "order by alignment").list();
 		return sList;
 	}
 
@@ -58,10 +60,21 @@ public class SuperheroDAO implements ISuperheroDAO {
 	}
 	
 	@Override
-	public List<Superhero> random5() 
+	public List<Superhero> random5(String alignment){
+		Session ses = HibernateUtil.getSession();
+		List<Superhero> sList = ses.createQuery("FROM superheros WHERE alignment='" + alignment 
+				+ "'ORDER BY rand()").setMaxResults(5).list();
+		return sList;
+	}
 	
 	
-	
+	@Override
+	public Superhero randomOpponent(String alignment){
+		Session ses = HibernateUtil.getSession();
+		Superhero s = (Superhero) ses.createQuery("FROM superheros WHERE alignment='" + alignment 
+				+ "'ORDER BY rand()").setMaxResults(1);
+		return s;
+	}
 	
 	
 }

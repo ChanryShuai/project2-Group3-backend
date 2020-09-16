@@ -15,4 +15,10 @@ public interface ISuperheroDAO {
 
 	public Superhero findById(int id);
 
+	public List<Superhero> findByAlignment(String alignment);
+
+	public List<Superhero> random5(String alignment);
+
+	public Superhero randomOpponent(String alignment);
+
 }

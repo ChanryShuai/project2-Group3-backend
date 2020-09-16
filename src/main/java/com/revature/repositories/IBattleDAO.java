@@ -9,7 +9,7 @@ import com.revature.models.Battle;
 @Repository
 public interface IBattleDAO {
 
-	public String findOutcome(int battleId);
+	public void findOutcome(int battleId);
 
 	public boolean updateBattle(Battle b);
 
