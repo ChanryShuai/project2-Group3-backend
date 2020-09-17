@@ -15,6 +15,6 @@ public interface IUserDAO {
 
 	public User selectByUserId(int userId);
 
-	public boolean updateUser(User u);
+	public User updateUser(User u);
 
 }

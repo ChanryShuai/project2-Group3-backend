@@ -30,6 +30,9 @@ public class User {
 
 	@Column(name = "userpass", nullable = false)
 	private String password;
+	
+	@Column(name = "salt", nullable = false)
+	private String salt;
 
 	@Column(name = "first_name", nullable = false)
 	private String first;
@@ -55,8 +58,9 @@ public class User {
 		this.username = username;
 
 		//password encryption
-		String salt = PasswordUtil.getSalt(30);
-		this.password = PasswordUtil.generateSecurePassword(password, salt);
+		String encode = PasswordUtil.getSalt(30);
+		this.password = PasswordUtil.generateSecurePassword(password, encode);
+		this.salt = encode;
 
 		this.first = first;
 		this.last = last;
@@ -77,9 +81,10 @@ public class User {
 		this.userId = userId;
 		this.username = username;
 
-		String salt = PasswordUtil.getSalt(30);
-		this.password = PasswordUtil.generateSecurePassword(password, salt);
-
+		String encode = PasswordUtil.getSalt(30);
+		this.password = PasswordUtil.generateSecurePassword(password, encode);
+		this.salt = encode;
+		
 		this.first = first;
 		this.last = last;
 		this.userWins = userWins;
@@ -159,6 +164,15 @@ public class User {
 	}
 
 	
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	
 
 	@Override
 	public int hashCode() {
@@ -167,6 +181,7 @@ public class User {
 		result = prime * result + ((first == null) ? 0 : first.hashCode());
 		result = prime * result + ((last == null) ? 0 : last.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
 		result = prime * result + userId;
 		result = prime * result + userLosses;
 		long temp;
@@ -200,6 +215,11 @@ public class User {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
+			return false;
+		if (salt == null) {
+			if (other.salt != null)
+				return false;
+		} else if (!salt.equals(other.salt))
 			return false;
 		if (userId != other.userId)
 			return false;

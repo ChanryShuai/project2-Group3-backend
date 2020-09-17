@@ -1,7 +1,5 @@
 package com.revature.repositories;
 
-
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,20 +10,25 @@ import com.revature.utils.HibernateUtil;
 
 @Repository
 public class UserDAO implements IUserDAO {
-	
+
 	@Override
 	public User validUser(String username, String password) {
 		Session ses = HibernateUtil.getSession();
-		
+
 		User u = findByUsername(username);
-		User p = ses.createQuery("FROM User WHERE password = '" + password + "'", User.class).uniqueResult();
-		
-		if (u == p) {
-			return u;
+
+		if (u != null) {
+			User p = ses.createQuery("FROM User WHERE password = '" + password + "'", User.class).uniqueResult();
+
+			if (u == p) {
+				return u;
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
@@ -35,7 +38,6 @@ public class UserDAO implements IUserDAO {
 		return u;
 	}
 
-	
 	@Override
 	public User insert(User u) {
 		Session ses = HibernateUtil.getSession();
@@ -44,30 +46,30 @@ public class UserDAO implements IUserDAO {
 		tr.commit();
 		return u;
 	}
-	
+
 	@Override
-	public boolean updateUser(User u) {
-	
+	public User updateUser(User u) {
+
 		Session ses = HibernateUtil.getSession();
-		
+
 		try {
-		ses.merge(u);
-		return true;
-		
-	}catch(HibernateException e) {
-		e.printStackTrace();
-		return false;
+			ses.merge(u);
+			return selectByUserId(u.getUserId());
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
-	}
-	
+
 	@Override
 	public User selectByUserId(int userId) {
-		
+
 		Session ses = HibernateUtil.getSession();
-		
+
 		User u = ses.get(User.class, userId);
-		
+
 		return u;
 	}
-	
+
 }

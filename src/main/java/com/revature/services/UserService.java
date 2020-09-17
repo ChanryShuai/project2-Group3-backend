@@ -3,13 +3,15 @@ package com.revature.services;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
 import com.revature.repositories.*;
 
+@Service
 public class UserService {
 
-	private static IUserDAO udao = new UserDAO();
+	private static IUserDAO udao;
 	private static final Logger log = LogManager.getLogger(UserService.class);
 	
 	public User insertUser(User u) {
@@ -22,7 +24,7 @@ public class UserService {
 		return udao.selectByUserId(userId);
 	}
 	
-	public boolean updateUser(User u) {
+	public User updateUser(User u) {
 		log.info("Updating a user");
 		return udao.updateUser(u);
 	}

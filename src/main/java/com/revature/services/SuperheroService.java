@@ -3,16 +3,18 @@ package com.revature.services;
 import com.revature.models.AddSuperheroDTO;
 import com.revature.models.Superhero;
 import com.revature.repositories.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Service
 public class SuperheroService {
 	
-	private static IUserDAO udao = new UserDAO();
-	private static ISuperheroDAO sdao = new SuperheroDAO();
+	private static IUserDAO udao;
+	private static ISuperheroDAO sdao;
 	private static final Logger log = LogManager.getLogger(SuperheroService.class);
 	
 	//I JUST MADE EVERYTHING A SET METHOD PULLING FROM THE DTO BECAUSE I AM NOT SURE HOW THE API WORKS WITH METHODS
