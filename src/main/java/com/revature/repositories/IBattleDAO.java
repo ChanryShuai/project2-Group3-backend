@@ -17,4 +17,8 @@ public interface IBattleDAO {
 
 	public List<Battle> findBattlesByUser(int userId);
 
+	public Battle addBattle(Battle b);
+
+	public Battle getBattleById(int id);
+
 }

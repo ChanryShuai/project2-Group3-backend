@@ -64,6 +64,22 @@ public class BattleDAO implements IBattleDAO {
 	Session ses = HibernateUtil.getSession();
 	List<Battle> bList = ses.createQuery("From battle WHERE user_id=" + userId).list();
 	return bList;
+	}
+	
+	@Override
+	public Battle addBattle(Battle b) {
+		
+		Session ses = HibernateUtil.getSession();
+		Transaction tr = ses.beginTransaction();
+		ses.save(b);
+		tr.commit();
+		return b;
+	}
+	@Override
+	public Battle getBattleById(int id) {
+		Session ses = HibernateUtil.getSession();
+		Battle b = ses.get(Battle.class, id);
+		return b;
 	}	
 	
 	

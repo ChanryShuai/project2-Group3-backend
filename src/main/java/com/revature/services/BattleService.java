@@ -33,4 +33,15 @@ public class BattleService {
 		log.info("Finding the user's battles");
 		return bdao.findBattlesByUser(userId);
 	}
+
+	public Battle addBattle(Battle b) {
+		log.info("Adding a new battle");
+		return bdao.addBattle(b);
+		
+	}
+
+	public Battle getBattleById(int id) {
+		log.info("Finding battle with id: " + id);
+		return bdao.getBattleById(id);
+	}
 }
