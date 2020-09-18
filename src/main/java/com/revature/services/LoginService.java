@@ -52,8 +52,4 @@ public class LoginService {
 		}
 	}
 	
-	public boolean logout() {
-		log.info("@logout in LoginService");
-		
-	}
 }

@@ -39,7 +39,7 @@ public class BattleController {
 	}
 	
 	//get one battle by ID
-	@GetMapping(value="/{id}")
+	@GetMapping(value="/{battle_id}")
 	public ResponseEntity<Battle> getBattleById(@PathVariable("battle_id") int id) {
 		Battle b = bSer.getBattleById(id);
 		if (b == null) {
@@ -49,11 +49,13 @@ public class BattleController {
 	}
 	
 	//get all battles
+	@GetMapping
 	public ResponseEntity<List<Battle>> findAllBattles() {
 		List<Battle> bList = bSer.findAllBattles();
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
 	}
 	
+	@GetMapping(value="/{user_id}")
 	//get battles by user
 	public ResponseEntity<List<Battle>> getBattleByUser(@PathVariable("user_id") int userId) {
 		List<Battle> bList = bSer.findBattlesByUser(userId);
