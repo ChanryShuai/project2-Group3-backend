@@ -21,7 +21,7 @@ import com.revature.services.LoginService;
 @Controller
 @RequestMapping
 @ResponseBody
-@CrossOrigin(origins = "*", allowedHeaders = "")
+@CrossOrigin
 public class LogController {
 
 	private LoginService lSer;

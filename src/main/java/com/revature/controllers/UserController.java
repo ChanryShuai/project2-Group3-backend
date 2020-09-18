@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,57 +17,57 @@ import com.revature.services.UserService;
 import com.revature.models.User;
 
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value = "/user")
 @ResponseBody
-@CrossOrigin(origins="*", allowedHeaders="")
+@CrossOrigin
 public class UserController {
-	
+
 	private UserService uSer;
-	
+
 	@Autowired
 	public UserController() {
 		super();
 		this.uSer = uSer;
 	}
-	
-	//add new user
-	@PostMapping("/user")
-	public ResponseEntity<User> addUser(@RequestBody User u){
+
+	// add new user
+	@PostMapping
+	public ResponseEntity<User> addUser(@RequestBody User u) {
 		User u1 = uSer.insertUser(u);
-		if(u == null) {
+		if (u == null) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
 		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u1);		
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u1);
 	}
-	
-	//get one user by ID
+
+	// get one user by ID
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable("id") int id){
-		User u= uSer.selectByUserId(id);
+	public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
+		User u = uSer.selectByUserId(id);
 		if (u == null) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
 		}
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 	}
-	
-	//get one user by username
-		@GetMapping("/user")
-		public ResponseEntity<User> getUserByUsename(@RequestParam String username){
-			User u= uSer.findByUsername(username);
-			if (u == null) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
-			}
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
-		}
-	
-	//update one user
-	@PostMapping("/user")
-	public ResponseEntity<User> updateUser(@RequestBody User u){
-		User u1 = uSer.updateUser(u);
-		if(u1 == null) {
+
+	// get one user by username
+	@GetMapping("/{username}")
+	public ResponseEntity<User> getUserByUsename(@PathVariable("username") String username) {
+		User u = uSer.findByUsername(username);
+		if (u == null) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
 		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u1);		
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 	}
-	
+
+	// update one user
+	@PostMapping
+	public ResponseEntity<User> updateUser(@RequestBody User u) {
+		User u1 = uSer.updateUser(u);
+		if (u1 == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+		}
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u1);
+	}
+
 }

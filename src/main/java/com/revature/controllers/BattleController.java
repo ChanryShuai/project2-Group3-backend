@@ -20,7 +20,7 @@ import com.revature.services.BattleService;
 @Controller
 @RequestMapping(value="/battle")
 @ResponseBody
-@CrossOrigin(origins="*", allowedHeaders="")
+@CrossOrigin
 public class BattleController {
 	
 	private BattleService bSer;

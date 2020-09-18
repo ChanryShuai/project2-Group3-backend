@@ -19,7 +19,7 @@ import com.revature.services.SuperheroService;
 @Controller
 @RequestMapping(value = "/superhero")
 @ResponseBody
-@CrossOrigin(origins = "*", allowedHeaders = "")
+@CrossOrigin
 public class SuperheroController {
 
 	private SuperheroService sSer;
@@ -31,13 +31,13 @@ public class SuperheroController {
 	}
 
 	// adding a superhero to DB -- no return
-	@PostMapping("/superhero")
+	@PostMapping
 	public void addSuperhero(@RequestBody Superhero s) {
 		sSer.addSuperhero(s);
 	}
 
 	// getting a superhero from DB
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Superhero> getSuperhero(@PathVariable("id") int id) {
 		Superhero s = sSer.findById(id);
 		if (s == null) {
