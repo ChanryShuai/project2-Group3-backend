@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,12 +33,13 @@ public class BattleController {
 	}
 	
 	//add new battle
-	@PostMapping("/battle")
+	@PostMapping
 	public void addBattle(@RequestBody Battle b) {
 		bSer.addBattle(b);
 	}
 	
 	//get one battle by ID
+	@GetMapping(value="/{id}")
 	public ResponseEntity<Battle> getBattleById(@PathVariable("battle_id") int id) {
 		Battle b = bSer.getBattleById(id);
 		if (b == null) {
