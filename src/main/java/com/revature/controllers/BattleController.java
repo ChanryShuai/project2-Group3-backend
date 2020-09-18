@@ -17,52 +17,70 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.revature.models.Battle;
 import com.revature.services.BattleService;
 
-
 @Controller
-@RequestMapping(value="/battle")
+@RequestMapping(value = "/battle")
 @ResponseBody
 @CrossOrigin
 public class BattleController {
-	
+
 	private BattleService bSer;
-	
+
 	@Autowired
 	public BattleController() {
 		super();
-		this.bSer=bSer;
+		this.bSer = bSer;
 	}
-	
-	//add new battle
+
+	// add new battle
 	@PostMapping
 	public void addBattle(@RequestBody Battle b) {
 		bSer.addBattle(b);
 	}
+
+//	//get one battle by ID
+//	@GetMapping(value="/{battle_id}")
+//	public ResponseEntity<Battle> getBattleById(@PathVariable("battle_id") int id) {
+//		Battle b = bSer.getBattleById(id);
+//		if (b == null) {
+//			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+//		}
+//		return ResponseEntity.status(HttpStatus.ACCEPTED).body(b);
+//	}
+//	
 	
-	//get one battle by ID
-	@GetMapping(value="/{battle_id}")
-	public ResponseEntity<Battle> getBattleById(@PathVariable("battle_id") int id) {
-		Battle b = bSer.getBattleById(id);
-		if (b == null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(b);
-	}
-	
-	//get all battles
+	// get all battles
 	@GetMapping
 	public ResponseEntity<List<Battle>> findAllBattles() {
 		List<Battle> bList = bSer.findAllBattles();
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
 	}
-	
-	@GetMapping(value="/{user_id}")
-	//get battles by user
-	public ResponseEntity<List<Battle>> getBattleByUser(@PathVariable("user_id") int userId) {
-		List<Battle> bList = bSer.findBattlesByUser(userId);
-		if (bList == null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+	@GetMapping(value = "/{input}")
+	// get battles by user
+	public ResponseEntity<List<Battle>> getBattleByUser(@PathVariable("input") String input) {
+		//if input = username
+		if (isNumeric(input)) {
+			List<Battle> bList = bSer.findBattlesByUser(input);
+			if (bList == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
+		//if input = battle_Id
+		} else {
+			List<Battle> bFake= bSer.getBattleById(Integer.parseInt(input));
+			if (bFake == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bFake);
 		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
 	}
 
+	public static boolean isNumeric(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
 }

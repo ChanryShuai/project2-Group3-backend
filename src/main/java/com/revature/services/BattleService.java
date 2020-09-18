@@ -29,9 +29,9 @@ public class BattleService {
 		return bdao.findAllBattles();
 	}
 	
-	public List<Battle> findBattlesByUser(int userId){
+	public List<Battle> findBattlesByUser(String username){
 		log.info("Finding the user's battles");
-		return bdao.findBattlesByUser(userId);
+		return bdao.findBattlesByUser(username);
 	}
 
 	public Battle addBattle(Battle b) {
@@ -40,7 +40,7 @@ public class BattleService {
 		
 	}
 
-	public Battle getBattleById(int id) {
+	public List<Battle> getBattleById(int id) {
 		log.info("Finding battle with id: " + id);
 		return bdao.getBattleById(id);
 	}

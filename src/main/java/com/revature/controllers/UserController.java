@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.services.UserService;
@@ -41,23 +40,34 @@ public class UserController {
 	}
 
 	// get one user by ID
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
-		User u = uSer.selectByUserId(id);
-		if (u == null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
-		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
-	}
+//	@GetMapping("/{id}")
+//	public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
+//		User u = uSer.selectByUserId(id);
+//		if (u == null) {
+//			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+//		}
+//		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
+//	}
 
-	// get one user by username
-	@GetMapping("/{username}")
-	public ResponseEntity<User> getUserByUsename(@PathVariable("username") String username) {
-		User u = uSer.findByUsername(username);
-		if (u == null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+	// get one user
+	@GetMapping("/{input}")
+	public ResponseEntity<User> getUserByUsename(@PathVariable("input") String input) {
+		// if input = username
+		if (isNumeric(input)) {
+			User u = uSer.findByUsername(input);
+			if (u == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
+
+			// if input = user_Id
+		} else {
+			User u = uSer.selectByUserId(Integer.parseInt(input));
+			if (u == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 		}
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 	}
 
 	// update one user
@@ -68,6 +78,15 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
 		}
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u1);
+	}
+
+	public static boolean isNumeric(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 }

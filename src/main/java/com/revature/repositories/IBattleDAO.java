@@ -15,10 +15,10 @@ public interface IBattleDAO {
 
 	public List<Battle> findAllBattles();
 
-	public List<Battle> findBattlesByUser(int userId);
+	public List<Battle> findBattlesByUser(String username);
 
 	public Battle addBattle(Battle b);
 
-	public Battle getBattleById(int id);
+	public List<Battle> getBattleById(int id);
 
 }

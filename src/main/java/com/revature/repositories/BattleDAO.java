@@ -6,14 +6,18 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.Battle;
 import com.revature.models.Superhero;
+import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
 @Repository
 public class BattleDAO implements IBattleDAO {
+	
+	private IUserDAO uDao;
 	
 	@Override
 	public void findOutcome(int battleId) {
@@ -59,8 +63,8 @@ public class BattleDAO implements IBattleDAO {
 	}
 
 	@Override
-	public List<Battle> findBattlesByUser(int userId) {
-	
+	public List<Battle> findBattlesByUser(String username) {
+	int userId = uDao.findByUsername(username).getUserId();
 	Session ses = HibernateUtil.getSession();
 	List<Battle> bList = ses.createQuery("From battle WHERE user_id=" + userId).list();
 	return bList;
@@ -76,10 +80,10 @@ public class BattleDAO implements IBattleDAO {
 		return b;
 	}
 	@Override
-	public Battle getBattleById(int id) {
+	public List<Battle> getBattleById(int id) {
 		Session ses = HibernateUtil.getSession();
-		Battle b = ses.get(Battle.class, id);
-		return b;
+		List<Battle> bList = ses.createQuery("From battle WHERE battle_id=" + id).list();
+		return bList;
 	}	
 	
 	
