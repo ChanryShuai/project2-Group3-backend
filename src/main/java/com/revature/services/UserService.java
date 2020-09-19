@@ -15,12 +15,12 @@ public class UserService {
 	private static final Logger log = LogManager.getLogger(UserService.class);
 	
 	public User insertUser(User u) {
-		log.info("Add user");
+		log.info("Adding user");
 		return udao.insert(u);
 	}
 	
 	public User selectByUserId(int userId) {
-		log.info("Find user by the user id");
+		log.info("Finding user by the user id");
 		return udao.selectByUserId(userId);
 	}
 	
@@ -30,7 +30,7 @@ public class UserService {
 	}
 	
 	public User findByUsername(String username) {
-		log.info("Find user by the username");
+		log.info("Finding user by the username");
 		return udao.findByUsername(username);
 	}
 	
