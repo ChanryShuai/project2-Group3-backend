@@ -71,5 +71,7 @@ public class UserDAO implements IUserDAO {
 
 		return u;
 	}
+	
+	//get all users method
 
 }

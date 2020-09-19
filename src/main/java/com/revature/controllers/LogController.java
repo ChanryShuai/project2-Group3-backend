@@ -39,7 +39,7 @@ public class LogController {
 //		l.username = req.getParameter("username");
 //		l.password = req.getParameter("password");
 
-		if (lSer.login(l)) {
+		if (lSer.addLogin(l) != null) {
 			HttpSession ses = req.getSession();
 			ses.setAttribute("user", l);
 			ses.setAttribute("loggedin", true);
@@ -63,7 +63,7 @@ public class LogController {
 			LoginDTO l = (LoginDTO) ses.getAttribute("user");
 			ses.invalidate();
 			res.setStatus(200);
-			res.getWriter().println(l.username + " has logged out successfully");
+			res.getWriter().println(l.getUsername() + " has logged out successfully");
 		} else {
 			res.setStatus(400);
 			res.getWriter().println("You must be logged in to logout!");
