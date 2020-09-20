@@ -45,4 +45,9 @@ public class UserService {
 		log.info("Finding all users");
 		return udao.findAllUsers();
 	}
+	
+	public UserService(UserDAO udao) {
+		super();
+		this.udao = udao;
+	}
 }

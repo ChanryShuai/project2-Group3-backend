@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.models.LoginDTO;
 import com.revature.repositories.ILoginDAO;
+import com.revature.repositories.LoginDAO;
 import com.revature.repositories.UserDAO;
 
 @Service
@@ -41,7 +42,7 @@ public class LoginService {
 		super();
 	}
 
-	
+
 	//adding a new user-login to DB
 	public LoginDTO addLogin(LoginDTO l) {
 		log.info("@login in LoginService");
