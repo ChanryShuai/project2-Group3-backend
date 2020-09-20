@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ public class UserController {
 	@Autowired
 	public UserController() {
 		super();
-		this.uSer = uSer;
 	}
 
 	// add new user

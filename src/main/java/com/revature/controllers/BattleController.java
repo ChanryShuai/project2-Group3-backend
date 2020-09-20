@@ -28,7 +28,6 @@ public class BattleController {
 	@Autowired
 	public BattleController() {
 		super();
-		this.bSer = bSer;
 	}
 
 	// add new battle
