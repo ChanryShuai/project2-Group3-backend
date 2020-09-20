@@ -1,12 +1,9 @@
 package com.revature.models;
 
-import javax.persistence.CascadeType;
-
 /*User model class: including user credentials, user info, and user win/loss records*/
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -97,6 +94,14 @@ public class User {
 		} else {
 			this.userRecord = 100;
 		}
+	}
+
+	public User(int userId, String first, String last, double userRecord) {
+		super();
+		this.userId = userId;
+		this.first = first;
+		this.last = last;
+		this.userRecord = userRecord;
 	}
 
 	public int getUserId() {

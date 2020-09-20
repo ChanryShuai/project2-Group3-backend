@@ -1,17 +1,13 @@
 package com.revature.repositories;
 
-import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.Battle;
 import com.revature.models.Superhero;
-import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
 @Repository

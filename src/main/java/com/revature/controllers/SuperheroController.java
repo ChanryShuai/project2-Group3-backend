@@ -27,7 +27,6 @@ public class SuperheroController {
 	@Autowired
 	public SuperheroController() {
 		super();
-		this.sSer = sSer;
 	}
 
 	// adding a superhero to DB -- no return

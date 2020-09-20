@@ -1,6 +1,5 @@
 package com.revature.services;
 
-import com.revature.models.AddSuperheroDTO;
 import com.revature.models.Superhero;
 import com.revature.repositories.*;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 @Service
 public class SuperheroService {
 	
-	private static IUserDAO udao;
 	private static ISuperheroDAO sdao;
 	private static final Logger log = LogManager.getLogger(SuperheroService.class);
 	

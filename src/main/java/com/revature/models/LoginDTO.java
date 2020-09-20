@@ -13,14 +13,14 @@ public class LoginDTO {
 	
 	@Id
 	private String username;
-	private String password;
+	private String password; 
 	
 	public LoginDTO () {}
 
 	public LoginDTO(String username, String password) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = password; 
 	}
 
 	public String getUsername() {
@@ -38,11 +38,15 @@ public class LoginDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
+	 
 	@Override
 	public String toString() {
 		return "LoginDTO [username=" + username + ", password=" + password + "]";
 	}
+
+	
 	
 	
 

@@ -29,8 +29,8 @@ public class LogController {
 	@Autowired
 	public LogController() {
 		super();
-		this.lSer = lSer;
 	}
+
 
 	@PostMapping("/login")
 	public void login(HttpServletRequest req, HttpServletResponse res, @RequestBody LoginDTO l)

@@ -28,7 +28,6 @@ public class UserController {
 	@Autowired
 	public UserController() {
 		super();
-		this.uSer = uSer;
 	}
 
 	// add new user

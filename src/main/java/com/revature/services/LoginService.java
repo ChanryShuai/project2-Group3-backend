@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.LoginDTO;
-import com.revature.models.User;
 import com.revature.repositories.ILoginDAO;
-import com.revature.repositories.LoginDAO;
 import com.revature.repositories.UserDAO;
-import com.revature.utils.PasswordUtil;
 
 @Service
 public class LoginService {
@@ -42,7 +39,6 @@ public class LoginService {
 	@Autowired
 	public LoginService() {
 		super();
-		this.ldao = ldao;
 	}
 
 	
