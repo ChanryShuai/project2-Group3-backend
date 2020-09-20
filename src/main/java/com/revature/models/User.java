@@ -47,7 +47,7 @@ public class User {
 	private int userLosses;
 
 	@Column(name = "user_record")
-	private double userRecord;
+	public double userRecord;
 	
 	public User() {
 		super();

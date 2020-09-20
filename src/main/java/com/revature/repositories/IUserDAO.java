@@ -1,5 +1,7 @@
 package com.revature.repositories;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.User;
@@ -16,5 +18,7 @@ public interface IUserDAO {
 	public User selectByUserId(int userId);
 
 	public User updateUser(User u);
+
+	public List<User> findAllUsers();
 
 }

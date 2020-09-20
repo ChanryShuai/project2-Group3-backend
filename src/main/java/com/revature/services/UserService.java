@@ -1,6 +1,8 @@
 package com.revature.services;
 
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -37,5 +39,10 @@ public class UserService {
 	public User validUser(String username, String password) {
 		log.info("Validating the user by login credentials");
 		return udao.validUser(username, password);
+	}
+
+	public List<User> findAllUsers() {
+		log.info("Finding all users");
+		return udao.findAllUsers();
 	}
 }

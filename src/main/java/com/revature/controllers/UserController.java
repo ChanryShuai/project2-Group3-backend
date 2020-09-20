@@ -1,5 +1,8 @@
 package com.revature.controllers;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.services.UserService;
@@ -69,7 +73,14 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 		}
 	}
-
+	
+	// getting a list of all users (for the record controller)
+	// did this RequestMapping method like Tim to simplify
+	@RequestMapping(method=RequestMethod.GET)
+	public List<User> findAllUsers() {
+		return uSer.findAllUsers();
+	}
+	
 	// update one user
 	@PostMapping
 	public ResponseEntity<User> updateUser(@RequestBody User u) {

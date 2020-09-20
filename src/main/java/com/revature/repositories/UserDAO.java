@@ -1,5 +1,7 @@
 package com.revature.repositories;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -71,7 +73,17 @@ public class UserDAO implements IUserDAO {
 
 		return u;
 	}
+
+	@Override
+	public List<User> findAllUsers() {
+		
+		Session ses = HibernateUtil.getSession();
+		
+		List<User> uList = ses.createQuery("FROM User").list();
+		
+		return uList;
+	}
 	
-	//get all users method
+	
 
 }
