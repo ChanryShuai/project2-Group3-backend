@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.services.UserService;
@@ -53,7 +51,7 @@ public class UserController {
 //		return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 //	}
 
-	// get one user
+	// get one user by username or Id
 	@GetMapping("/{input}")
 	public ResponseEntity<User> getUserByUsename(@PathVariable("input") String input) {
 		// if input = username
@@ -73,14 +71,22 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 		}
 	}
-	
+
 	// getting a list of all users (for the record controller)
 	// did this RequestMapping method like Tim to simplify
-	@RequestMapping(method=RequestMethod.GET)
-	public List<User> findAllUsers() {
-		return uSer.findAllUsers();
+	// I don't think we need the record controller -- this is already handled in the frontend by
+	// the getAllUserRecords in battle.service.ts 
+	// we need to make a new userRecord model if we are using the record controller approach 
+	@GetMapping
+	public ResponseEntity<List<User>> findAllUsers() {
+		List<User> uList = uSer.findAllUsers();
+
+		if (uList == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(uList);
 	}
-	
+
 	// update one user
 	@PostMapping
 	public ResponseEntity<User> updateUser(@RequestBody User u) {

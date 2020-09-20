@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.revature.models.User;
-import com.revature.repositories.UserDAO;
 import com.revature.services.UserService;
 
 
@@ -20,7 +19,6 @@ import com.revature.services.UserService;
 public class RecordController {
 	
 	private UserService uSer;
-	public UserDAO udao;
 	
 	@Autowired
 	public RecordController() {
@@ -30,6 +28,8 @@ public class RecordController {
 	
 	//get all user records
 	// THIS NEEDS TO BE LOOKED OVER BECAUSE I DON"T THINK IT IS CORRECT
+	//this will do the same thing as the method findAllUsers() in UserController
+	
 	@GetMapping
 	public ResponseEntity<List<User>> getUserRecords(){
 		
