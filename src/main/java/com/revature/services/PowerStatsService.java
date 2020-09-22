@@ -15,6 +15,11 @@ public class PowerStatsService {
 	private static IPowerStatsDAO pdao = new PowerStatsDAO();
 	private static final Logger log = LogManager.getLogger(PowerStatsService.class);
 	
+	public PowerStatsService(PowerStatsDAO pdao) {
+		super();
+		PowerStatsService.pdao = pdao;
+	}
+
 	public PowerStats selectByPowerStatsId(int powerStatsId) {
 		log.info("Selecting a powerStats object");
 		return pdao.selectByPowerStatsId(powerStatsId);

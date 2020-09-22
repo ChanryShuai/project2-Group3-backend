@@ -30,6 +30,11 @@ public class SuperheroService {
 //		return false;
 //	}
 
+	public SuperheroService(SuperheroDAO sdao) {
+		super();
+		SuperheroService.sdao = sdao;
+	}
+
 	public boolean addSuperhero (Superhero s) {
 		log.info("Adding a Superhero from the API");
 		return sdao.addSuperhero(s);
@@ -45,18 +50,18 @@ public class SuperheroService {
 		return sdao.findById(id);
 	}
 	
-	public List<Superhero> findByAlignment(String alignment){
-		log.info("Find all the superheros by alignment");
-		return sdao.findByAlignment(alignment);
-	}
-	
-	public List<Superhero> random5(String alignment){
-		log.info("Giving the user a set of 5 superheros");
-		return sdao.random5(alignment);
-	}
-	
-	public Superhero randomOpponent(String alignment) {
-		log.info("Giving the user an opponent");
-		return sdao.randomOpponent(alignment);
-	}
+//	public List<Superhero> findByAlignment(String alignment){
+//		log.info("Find all the superheros by alignment");
+//		return sdao.findByAlignment(alignment);
+//	}
+//	
+//	public List<Superhero> random5(String alignment){
+//		log.info("Giving the user a set of 5 superheros");
+//		return sdao.random5(alignment);
+//	}
+//	
+//	public Superhero randomOpponent(String alignment) {
+//		log.info("Giving the user an opponent");
+//		return sdao.randomOpponent(alignment);
+//	}
 }

@@ -48,6 +48,6 @@ public class UserService {
 	
 	public UserService(UserDAO udao) {
 		super();
-		this.udao = udao;
+		UserService.udao = udao;
 	}
 }

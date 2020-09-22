@@ -49,31 +49,31 @@ public class SuperheroDAO implements ISuperheroDAO {
 		return s;
 	}
 	
-	@Override
-	public List<Superhero> findByAlignment(String alignment) {
-		
-		Session ses = HibernateUtil.getSession();
-		List<Superhero> sList = ses.createQuery("FROM superheros WHERE alignment='" + alignment +"'").list();
-		return sList;
-		
-	}
+//	@Override
+//	public List<Superhero> findByAlignment(String alignment) {
+//		
+//		Session ses = HibernateUtil.getSession();
+//		List<Superhero> sList = ses.createQuery("FROM superheros WHERE alignment='" + alignment +"'").list();
+//		return sList;
+//		
+//	}
 	
-	@Override
-	public List<Superhero> random5(String alignment){
-		Session ses = HibernateUtil.getSession();
-		List<Superhero> sList = ses.createQuery("FROM superheros WHERE alignment='" + alignment 
-				+ "'ORDER BY rand()").setMaxResults(5).list();
-		return sList;
-	}
-	
-	
-	@Override
-	public Superhero randomOpponent(String alignment){
-		Session ses = HibernateUtil.getSession();
-		Superhero s = (Superhero) ses.createQuery("FROM superheros WHERE alignment='" + alignment 
-				+ "'ORDER BY rand()").setMaxResults(1);
-		return s;
-	}
+//	@Override
+//	public List<Superhero> random5(String alignment){
+//		Session ses = HibernateUtil.getSession();
+//		List<Superhero> sList = ses.createQuery("FROM superheros WHERE alignment='" + alignment 
+//				+ "'ORDER BY rand()").setMaxResults(5).list();
+//		return sList;
+//	}
+//	
+//	
+//	@Override
+//	public Superhero randomOpponent(String alignment){
+//		Session ses = HibernateUtil.getSession();
+//		Superhero s = (Superhero) ses.createQuery("FROM superheros WHERE alignment='" + alignment 
+//				+ "'ORDER BY rand()").setMaxResults(1);
+//		return s;
+//	}
 	
 	
 }

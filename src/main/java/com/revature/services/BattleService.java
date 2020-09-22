@@ -16,6 +16,11 @@ public class BattleService {
 	private static IBattleDAO bdao = new BattleDAO();
 	private static final Logger log = LogManager.getLogger(BattleService.class);
 	
+	public BattleService(BattleDAO bdao) {
+		super();
+		BattleService.bdao = bdao;
+	}
+
 	public void findOutcome(int battleId) {
 		log.info("Finding the battle outcome");
 		bdao.findOutcome(battleId);
