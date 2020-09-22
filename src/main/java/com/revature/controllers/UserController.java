@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.revature.services.UserService;
 import com.revature.models.User;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @Controller
 @RequestMapping(value = "/user")
 @ResponseBody
@@ -28,8 +28,9 @@ public class UserController {
 	private UserService uSer;
 
 	@Autowired
-	public UserController() {
+	public UserController(UserService uSer) {
 		super();
+		this.uSer = uSer;
 	}
 
 	// add new user

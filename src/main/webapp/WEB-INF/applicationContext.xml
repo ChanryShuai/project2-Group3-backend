@@ -20,6 +20,33 @@
 	
 	<tx:annotation-driven></tx:annotation-driven>
 	
+	<!-- class for data-sources -->
+	<bean id="ourDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<!-- You will need to set your own RDS location for the URL along with your Username and Password -->
+		<property name="url" value="jdbc:postgresql://javafs200803.cpgbaphxuyjb.us-east-2.rds.amazonaws.com:5432/project2group3" />
+		<property name="username" value="postgres" />
+		<property name="password" value="masterpassword" />
+	</bean>
+	
+	<!-- class for sessionFactory -->
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="ourDataSource"></property>
+		<property name="packagesToScan" value="com.revature"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property> 
+	</bean>
+	
+	<bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<!-- transaction propagation -->
+		<property name="nestedTransactionAllowed" value="true"></property>
+	</bean>
 	
 
 </beans>

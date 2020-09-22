@@ -15,7 +15,7 @@ import com.revature.repositories.UserDAO;
 import com.revature.services.UserService;
 @CrossOrigin(origins = "*")
 @Controller
-@RequestMapping(value = "/user/record")
+@RequestMapping(value = "/record")
 @ResponseBody
 
 public class RecordController {
