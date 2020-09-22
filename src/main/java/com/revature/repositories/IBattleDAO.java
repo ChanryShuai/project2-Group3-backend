@@ -9,9 +9,9 @@ import com.revature.models.Battle;
 @Repository
 public interface IBattleDAO {
 
-	public void findOutcome(int battleId);
+	public String findOutcome(int battleId);
 
-	public boolean updateBattle(Battle b);
+	public boolean updateBattle(List<Battle> b);
 
 	public List<Battle> findAllBattles();
 

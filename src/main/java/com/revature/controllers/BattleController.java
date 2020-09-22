@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.models.Battle;
+import com.revature.models.BattleDTO;
 import com.revature.services.BattleService;
 
 @Controller
@@ -32,8 +33,8 @@ public class BattleController {
 
 	// add new battle
 	@PostMapping
-	public void addBattle(@RequestBody Battle b) {
-		bSer.addBattle(b);
+	public void addBattle(@RequestBody BattleDTO bdto) {
+		bSer.addBattle(bdto);
 	}
 
 //	//get one battle by ID

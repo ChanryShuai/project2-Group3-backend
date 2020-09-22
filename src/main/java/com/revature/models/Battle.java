@@ -19,15 +19,16 @@ public class Battle implements Serializable{
 	@Column(name="outcomes")
 	private String outcomes;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="avatar_id", nullable=false)
-	//@Column(name="avatar_id", nullable=false, unique=true)
-	private Superhero avatarId;
+//	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+//	@JoinColumn(name="avatar_id", nullable=false)
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="opponent_id", nullable=false)
-	//@Column(name="opponent_id",nullable=false, unique=true)
-	private Superhero opponentId;
+	@Column(name="avatar", nullable=false)
+	private String avatar;
+	
+//	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+//	@JoinColumn(name="opponent_id", nullable=false)
+	@Column(name="opponent",nullable=false)
+	private String opponent;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
@@ -38,20 +39,20 @@ public class Battle implements Serializable{
 		super();
 	}
 
-	public Battle(int battleId, String outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+	public Battle(int battleId, String outcomes, String avatar, String opponent, User userId) {
 		super();
 		this.battleId = battleId;
 		this.outcomes = outcomes;
-		this.avatarId = avatarId;
-		this.opponentId = opponentId;
+		this.avatar = avatar;
+		this.opponent = opponent;
 		this.userId = userId;
 	}
 
-	public Battle(String outcomes, Superhero avatarId, Superhero opponentId, User userId) {
+	public Battle(String outcomes, String avatar, String opponent, User userId) {
 		super();
 		this.outcomes = outcomes;
-		this.avatarId = avatarId;
-		this.opponentId = opponentId;
+		this.avatar = avatar;
+		this.opponent = opponent;
 		this.userId = userId;
 	}
 
@@ -59,9 +60,9 @@ public class Battle implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((avatarId == null) ? 0 : avatarId.hashCode());
+		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
 		result = prime * result + battleId;
-		result = prime * result + ((opponentId == null) ? 0 : opponentId.hashCode());
+		result = prime * result + ((opponent == null) ? 0 : opponent.hashCode());
 		result = prime * result + ((outcomes == null) ? 0 : outcomes.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
@@ -76,17 +77,17 @@ public class Battle implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Battle other = (Battle) obj;
-		if (avatarId == null) {
-			if (other.avatarId != null)
+		if (avatar == null) {
+			if (other.avatar != null)
 				return false;
-		} else if (!avatarId.equals(other.avatarId))
+		} else if (!avatar.equals(other.avatar))
 			return false;
 		if (battleId != other.battleId)
 			return false;
-		if (opponentId == null) {
-			if (other.opponentId != null)
+		if (opponent == null) {
+			if (other.opponent != null)
 				return false;
-		} else if (!opponentId.equals(other.opponentId))
+		} else if (!opponent.equals(other.opponent))
 			return false;
 		if (outcomes == null) {
 			if (other.outcomes != null)
@@ -103,8 +104,8 @@ public class Battle implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Battle [battleId=" + battleId + ", outcomes=" + outcomes + ", avatarId=" + avatarId + ", opponentId="
-				+ opponentId + ", userId=" + userId + "]";
+		return "Battle [battleId=" + battleId + ", outcomes=" + outcomes + ", avatar=" + avatar + ", opponent="
+				+ opponent + ", userId=" + userId + "]";
 	}
 
 	public int getBattleId() {
@@ -123,20 +124,20 @@ public class Battle implements Serializable{
 		this.outcomes = outcomes;
 	}
 
-	public Superhero getAvatarId() {
-		return avatarId;
+	public String getAvatar() {
+		return avatar;
 	}
 
-	public void setAvatarId(Superhero avatarId) {
-		this.avatarId = avatarId;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
-	public Superhero getOpponentId() {
-		return opponentId;
+	public String getOpponent() {
+		return opponent;
 	}
 
-	public void setOpponentId(Superhero opponentId) {
-		this.opponentId = opponentId;
+	public void setOpponent(String opponent) {
+		this.opponent = opponent;
 	}
 
 	public User getUserId() {

@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.Battle;
-import com.revature.models.Superhero;
+import com.revature.models.BattleDTO;
 import com.revature.utils.HibernateUtil;
 
 @Repository
@@ -16,31 +16,23 @@ public class BattleDAO implements IBattleDAO {
 	private IUserDAO uDao;
 	
 	@Override
-	public void findOutcome(int battleId) {
+	public String findOutcome(int battleId) {
 		
 		Session ses = HibernateUtil.getSession();
 		
-			Battle b = ses.get(Battle.class, battleId);
+			BattleDTO b = ses.get(BattleDTO.class, battleId);
 			if(b != null) {
-			int avatarId = b.getAvatarId().getId();
-			Superhero avatar = ses.get(Superhero.class, avatarId );
 			
-			int opponentId = b.getOpponentId().getId();
-			Superhero opponent = ses.get(Superhero.class, opponentId );
-			
-			if(avatar.getPowerStats().getAverage() >= opponent.getPowerStats().getAverage()) {
-				b.setOutcomes("win");
-				System.out.println("You won!");
-			} else {
-				b.setOutcomes("loss");
-				System.out.println("You lost!");
+			String outcomes = b.getOutcomes();
+			return outcomes;
 			}
-			updateBattle(b);
+			
+			return null;
 		}
 		
-	}
+	
 	@Override
-	public boolean updateBattle(Battle b) {
+	public boolean updateBattle(List<Battle> b) {
 		Session ses = HibernateUtil.getSession();
 		
 		Transaction tx = ses.beginTransaction();
@@ -75,6 +67,7 @@ public class BattleDAO implements IBattleDAO {
 		tr.commit();
 		return b;
 	}
+	
 	@Override
 	public List<Battle> getBattleById(int id) {
 		Session ses = HibernateUtil.getSession();
