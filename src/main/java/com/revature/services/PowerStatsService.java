@@ -2,13 +2,14 @@ package com.revature.services;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.PowerStats;
 import com.revature.repositories.IPowerStatsDAO;
 
 import com.revature.repositories.PowerStatsDAO;
 
-
+@Service
 public class PowerStatsService {
 	
 	private static IPowerStatsDAO pdao = new PowerStatsDAO();

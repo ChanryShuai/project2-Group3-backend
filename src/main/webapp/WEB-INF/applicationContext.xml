@@ -14,10 +14,12 @@
 
 	<!-- You may set this file up to use annotations. -->
 	
-	 <context:component-scan base-package="com.revature"></context:component-scan>
+	<context:component-scan base-package="com.revature"></context:component-scan>
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<tx:annotation-driven></tx:annotation-driven>
+	
+	
 
 </beans>

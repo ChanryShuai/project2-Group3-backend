@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.revature.repositories.IBattleDAO;
 import com.revature.models.Battle;
 import com.revature.repositories.BattleDAO;
 
+@Service
 public class BattleService {
 
 	private static IBattleDAO bdao = new BattleDAO();

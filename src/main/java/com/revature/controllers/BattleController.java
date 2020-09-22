@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.revature.models.Battle;
 import com.revature.services.BattleService;
 
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping(value = "/battle")
 @ResponseBody
-@CrossOrigin
+
 public class BattleController {
 
 	private BattleService bSer;
