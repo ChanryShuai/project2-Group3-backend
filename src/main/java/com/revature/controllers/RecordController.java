@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import com.revature.models.User;
 import com.revature.repositories.UserDAO;
 import com.revature.services.UserService;
-
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping(value = "/user/record")
 @ResponseBody
-@CrossOrigin
+
 public class RecordController {
 
 	private UserService uSer; 

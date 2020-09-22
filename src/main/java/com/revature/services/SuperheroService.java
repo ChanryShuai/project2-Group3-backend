@@ -34,6 +34,7 @@
 //		log.info("Adding a Superhero from the API");
 //		return sdao.addSuperhero(s);
 //	}
+<<<<<<< HEAD
 //	
 //	public List<Superhero> findAllSuperheros(){
 //		log.info("Finding all the superheros");
@@ -45,6 +46,29 @@
 //		return sdao.findById(id);
 //	}
 //	
+=======
+
+	public SuperheroService(SuperheroDAO sdao) {
+		super();
+		SuperheroService.sdao = sdao;
+	}
+
+	public boolean addSuperhero (Superhero s) {
+		log.info("Adding a Superhero from the API");
+		return sdao.addSuperhero(s);
+	}
+	
+	public List<Superhero> findAllSuperheros(){
+		log.info("Finding all the superheros");
+		return sdao.findAllSuperheros();
+	}
+	
+	public Superhero findById(int id) {
+		log.info("Finding a superhero from the id");
+		return sdao.findById(id);
+	}
+	
+>>>>>>> 4189204e5076959a0b24cf4a7b7af7cda629738a
 //	public List<Superhero> findByAlignment(String alignment){
 //		log.info("Find all the superheros by alignment");
 //		return sdao.findByAlignment(alignment);
@@ -59,4 +83,8 @@
 //		log.info("Giving the user an opponent");
 //		return sdao.randomOpponent(alignment);
 //	}
+<<<<<<< HEAD
 //}
+=======
+}
+>>>>>>> 4189204e5076959a0b24cf4a7b7af7cda629738a

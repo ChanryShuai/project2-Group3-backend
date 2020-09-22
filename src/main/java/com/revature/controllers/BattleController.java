@@ -18,10 +18,11 @@ import com.revature.models.Battle;
 import com.revature.models.BattleDTO;
 import com.revature.services.BattleService;
 
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping(value = "/battle")
 @ResponseBody
-@CrossOrigin
+
 public class BattleController {
 
 	private BattleService bSer;

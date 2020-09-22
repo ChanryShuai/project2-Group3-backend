@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,11 +16,11 @@ import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import com.revature.services.LoginService;
 import com.revature.services.UserService;
-
-@RestController
-@RequestMapping
-
 @CrossOrigin(origins = "*")
+@RestController
+@RequestMapping(value="/login")
+
+
 //@SessionAttributes("log")
 public class LoginController {
 
