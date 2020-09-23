@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.revature.models.User;
-import com.revature.repositories.UserDAO;
 import com.revature.services.UserService;
 @CrossOrigin(origins = "*")
 @Controller

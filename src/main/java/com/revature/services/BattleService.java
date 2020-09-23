@@ -12,7 +12,6 @@ import com.revature.repositories.IUserDAO;
 import com.revature.models.Battle;
 import com.revature.models.BattleDTO;
 import com.revature.models.User;
-import com.revature.repositories.BattleDAO;
 
 @Service
 public class BattleService {
@@ -24,8 +23,8 @@ public class BattleService {
 	@Autowired
 	public BattleService(IBattleDAO bdao, IUserDAO udao) {
 		super();
-		this.bdao=bdao;
-		this.udao =udao;
+		BattleService.bdao=bdao;
+		BattleService.udao =udao;
 	}
 	
 	public void findOutcome(int battleId) {

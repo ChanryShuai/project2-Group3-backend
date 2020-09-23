@@ -7,14 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.revature.models.LoginDTO;
 import com.revature.repositories.ILoginDAO;
-import com.revature.repositories.LoginDAO;
 import com.revature.repositories.UserDAO;
 
 @Service
 public class LoginService {
 
 	private static final Logger log = LogManager.getLogger(UserDAO.class);
-	private static final Logger Log = LogManager.getLogger(LoginService.class);
+	//private static final Logger Log = LogManager.getLogger(LoginService.class);
 
 //	private static UserDAO udao;
 //	private static LoginDAO ldao;
