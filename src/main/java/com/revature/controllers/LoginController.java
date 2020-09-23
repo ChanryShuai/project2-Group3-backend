@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,20 +17,22 @@ import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import com.revature.services.LoginService;
 import com.revature.services.UserService;
-@CrossOrigin(origins = "*")
+
+
+@CrossOrigin 
 @RestController
 @RequestMapping(value="/login")
 
-
-//@SessionAttributes("log")
 public class LoginController {
 
 	private LoginService lSer;
 	private UserService uSer;
 
 	@Autowired
-	public LoginController() {
+	public LoginController(LoginService lSer, UserService uSer) {
 		super();
+		this.lSer = lSer;
+		this.uSer = uSer;
 	}
 
 	@GetMapping("/")
@@ -74,4 +77,22 @@ public class LoginController {
 				return null;
 			}
 		}
+
+		public LoginService getlSer() {
+			return lSer;
+		}
+
+		public void setlSer(LoginService lSer) {
+			this.lSer = lSer;
+		}
+
+		public UserService getuSer() {
+			return uSer;
+		}
+
+		public void setuSer(UserService uSer) {
+			this.uSer = uSer;
+		}
+		
+		
 }

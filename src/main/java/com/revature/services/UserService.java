@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
@@ -15,6 +16,12 @@ public class UserService {
 
 	private static IUserDAO udao;
 	private static final Logger log = LogManager.getLogger(UserService.class);
+	
+	@Autowired
+	public UserService(IUserDAO udao) {
+		super();
+		this.udao=udao;
+	}
 	
 	public User insertUser(User u) {
 		log.info("Adding user");

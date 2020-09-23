@@ -1,3 +1,4 @@
+package com.revature.repositories;
 //package com.revature.repositories;
 //
 //import org.hibernate.Session;

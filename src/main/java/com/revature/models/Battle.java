@@ -2,10 +2,14 @@ package com.revature.models;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /*Battle model class: including all user battles, participants, and the userId associated to each battle*/
 
+@Component
 @Entity
 @Table(name="battle")
 public class Battle implements Serializable{

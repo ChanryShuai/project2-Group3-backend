@@ -1,5 +1,8 @@
 package com.revature;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.revature.models.User;
 
 import com.revature.repositories.IUserDAO;
@@ -7,21 +10,22 @@ import com.revature.repositories.UserDAO;
 
 public class Driver {
 	
-	public static IUserDAO uDao = new UserDAO();
 	
 	
 	public static void main(String[] args) {
-		
-		insertUser();
-		User u = uDao.findByUsername("Chanry");
-		
-		}
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-
-	private static void insertUser() {
-		
-		User user1 = new User("Chanry", "12345", "Chanry", "Shuai", 1, 2);
-	}
+//	insertUser();
+//		User u = uDao.findByUsername("Chanry");
+//		
+//		}
+//
+//
+//	private static void insertUser() {
+//		
+//		User user1 = new User("Chanry", "12345", "Chanry", "Shuai", 1, 2);
+//	}
 	
 
+}
 }

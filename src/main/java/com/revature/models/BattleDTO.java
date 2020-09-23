@@ -1,18 +1,19 @@
 package com.revature.models;
 
+
 public class BattleDTO {
 
 	public int battleId;
 	public String outcomes;
 	public String avatar;
 	public String opponent;
-	public User userId;
+	public int userId;
 	
 	public BattleDTO( ) {
 		super();
 	}
 
-	public BattleDTO(int battleId,String outcomes, String avatar, String opponent, User userId) {
+	public BattleDTO(int battleId,String outcomes, String avatar, String opponent, int userId) {
 		super();
 		this.battleId = battleId;
 		this.outcomes = outcomes;
@@ -54,11 +55,11 @@ public class BattleDTO {
 		this.opponent = opponent;
 	}
 
-	public User getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

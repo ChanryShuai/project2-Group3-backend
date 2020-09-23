@@ -35,9 +35,10 @@
 		<property name="packagesToScan" value="com.revature"></property>
 		<property name="hibernateProperties">
 			<props>
+				<prop key="hibernate.default_schema">hibernate</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property> 
 	</bean>

@@ -12,7 +12,6 @@ import com.revature.models.LoginDTO;
 @Repository
 public class LoginDAO implements ILoginDAO {
 
-	
 	@Autowired
 	SessionFactory sf;
 	

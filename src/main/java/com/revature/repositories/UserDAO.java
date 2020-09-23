@@ -16,6 +16,7 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public User validUser(String username, String password) {
 		Session ses = HibernateUtil.getSession();
+		
 
 		User u = findByUsername(username);
 

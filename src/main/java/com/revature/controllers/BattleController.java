@@ -28,8 +28,9 @@ public class BattleController {
 	private BattleService bSer;
 
 	@Autowired
-	public BattleController() {
+	public BattleController(BattleService bSer) {
 		super();
+		this.bSer = bSer;
 	}
 
 	// add new battle

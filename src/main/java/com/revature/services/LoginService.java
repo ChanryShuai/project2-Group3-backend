@@ -38,8 +38,9 @@ public class LoginService {
 	private ILoginDAO ldao;
 
 	@Autowired
-	public LoginService() {
+	public LoginService(ILoginDAO ldao) {
 		super();
+		this.ldao=ldao;
 	}
 
 

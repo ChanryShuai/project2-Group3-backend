@@ -3,14 +3,18 @@ package com.revature.models;
 /*User model class: including user credentials, user info, and user win/loss records*/
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.revature.utils.PasswordUtil;
 
+@Component
 @Entity
 @Table(name = "users")
 public class User {
