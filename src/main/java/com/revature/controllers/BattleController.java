@@ -60,20 +60,20 @@ public class BattleController {
 	@GetMapping(value = "/{input}")
 	// get battles by user
 	public ResponseEntity<List<Battle>> getBattleByUser(@PathVariable("input") String input) {
-		//if input = username
-		if (isNumeric(input)) {
-			List<Battle> bList = bSer.findBattlesByUser(input);
-			if (bList == null) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-			}
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
 		//if input = battle_Id
-		} else {
+		if (isNumeric(input)) {
 			List<Battle> bFake= bSer.getBattleById(Integer.parseInt(input));
 			if (bFake == null) {
 				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 			}
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bFake);
+		//if input = username
+		} else {
+			List<Battle> bList = bSer.findBattlesByUser(input);
+			if (bList == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bList);
 		}
 	}
 
