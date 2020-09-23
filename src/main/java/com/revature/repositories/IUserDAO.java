@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.models.User;
 
-@Repository
+//@Repository
 public interface IUserDAO {
 
 	public User validUser(String username, String password);

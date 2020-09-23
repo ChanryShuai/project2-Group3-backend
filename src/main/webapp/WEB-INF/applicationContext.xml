@@ -49,5 +49,20 @@
 		<property name="nestedTransactionAllowed" value="true"></property>
 	</bean>
 	
+	<beans>
+
+  <bean id="UserDAO" class="com.revature.repositories.UserDAO">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <bean id="LoginDAO" class="com.revature.repositories.LoginDAO">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <bean id="battleDAO" class="com.revature.repositories.BattleDAO">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+</beans>
 
 </beans>

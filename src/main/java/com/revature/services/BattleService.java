@@ -76,21 +76,7 @@ public class BattleService {
 		return bdao.getBattleById(id);
 	}
 
-	public static IBattleDAO getBdao() {
-		return bdao;
-	}
-
-	public static void setBdao(IBattleDAO bdao) {
-		BattleService.bdao = bdao;
-	}
-
-	public static IUserDAO getUdao() {
-		return udao;
-	}
-
-	public static void setUdao(IUserDAO udao) {
-		BattleService.udao = udao;
-	}
+	
 	
 	
 }
