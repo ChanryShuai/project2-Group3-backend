@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.models.User;
@@ -12,7 +14,11 @@ import com.revature.utils.HibernateUtil;
 
 @Repository
 public class UserDAO implements IUserDAO {
+	
 
+	@Autowired
+	SessionFactory sf;
+	
 	@Override
 	public User validUser(String username, String password) {
 		Session ses = HibernateUtil.getSession();

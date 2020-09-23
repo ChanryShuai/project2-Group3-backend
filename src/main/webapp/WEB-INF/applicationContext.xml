@@ -55,7 +55,7 @@
     <property name="sessionFactory" ref="sessionFactory"/>
   </bean>
   
-  <bean id="LoginDAO" class="com.revature.repositories.LoginDAO">
+  <bean id="loginDAO" class="com.revature.repositories.LoginDAO">
     <property name="sessionFactory" ref="sessionFactory"/>
   </bean>
   

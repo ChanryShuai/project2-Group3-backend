@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
@@ -13,6 +15,7 @@ import com.revature.repositories.*;
 
 @Service
 public class UserService {
+	
 
 	private static IUserDAO udao;
 	private static final Logger log = LogManager.getLogger(UserService.class);
