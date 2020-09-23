@@ -54,15 +54,15 @@ public class User {
 		super();
 	}
 
-	public User(String username, String password, String first, String last, int userWins, int userLosses) {
+	public User(String username, String password, String first, String last, String salt, int userWins, int userLosses) {
 		super();
 		this.username = username;
 
-		//password encryption
-		String encode = PasswordUtil.getSalt(30);
-		this.password = PasswordUtil.generateSecurePassword(password, encode);
-		this.salt = encode;
-
+//		//password encryption
+//		String encode = PasswordUtil.getSalt(30);
+//		this.password = PasswordUtil.generateSecurePassword(password, encode);
+//		this.salt = encode;
+		this.salt = salt;
 		this.first = first;
 		this.last = last;
 		this.userWins = userWins;
@@ -77,15 +77,15 @@ public class User {
 		}
 	}
 
-	public User(int userId, String username, String password, String first, String last, int userWins, int userLosses) {
+	public User(int userId, String username, String password, String first, String last, String salt, int userWins, int userLosses) {
 		super();
 		this.userId = userId;
 		this.username = username;
 
-		String encode = PasswordUtil.getSalt(30);
-		this.password = PasswordUtil.generateSecurePassword(password, encode);
-		this.salt = encode;
-		
+//		String encode = PasswordUtil.getSalt(30);
+//		this.password = PasswordUtil.generateSecurePassword(password, encode);
+//		this.salt = encode;
+//		
 		this.first = first;
 		this.last = last;
 		this.userWins = userWins;
