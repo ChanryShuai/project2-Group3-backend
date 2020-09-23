@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import org.junit.Test;
 
 import com.revature.models.Battle;
-import com.revature.models.Superhero;
+
 import com.revature.models.User;
 import com.revature.repositories.BattleDAO;
 import com.revature.repositories.IBattleDAO;
