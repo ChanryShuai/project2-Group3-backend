@@ -56,21 +56,22 @@ public class UserController {
 	// get one user by username or Id
 	@GetMapping("/{input}")
 	public ResponseEntity<User> getUserByUsename(@PathVariable("input") String input) {
-		// if input = username
+		// if input = user_Id
 		if (isNumeric(input)) {
+			User u = uSer.selectByUserId(Integer.parseInt(input));
+			if (u == null) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
+			}
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
+			// if input = username
+		} else {
+			
 			User u = uSer.findByUsername(input);
 			if (u == null) {
 				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
 			}
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 
-			// if input = user_Id
-		} else {
-			User u = uSer.selectByUserId(Integer.parseInt(input));
-			if (u == null) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // .build() builds an empty response body
-			}
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(u);
 		}
 	}
 
