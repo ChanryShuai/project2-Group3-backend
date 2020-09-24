@@ -35,8 +35,10 @@ public class BattleController {
 
 	// add new battle
 	@PostMapping
-	public void addBattle(@RequestBody BattleDTO bdto) {
-		bSer.addBattle(bdto);
+	public ResponseEntity<Battle> addBattle(@RequestBody BattleDTO bdto) {
+		Battle b = bSer.addBattle(bdto);
+		return ResponseEntity.status(HttpStatus.OK).body(b);
+		
 	}
 
 //	//get one battle by ID

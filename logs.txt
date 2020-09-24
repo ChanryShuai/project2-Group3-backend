@@ -13,3 +13,39 @@
 2020-09-23 21:28:58 INFO  BattleService:45 - Finding all the battles
 2020-09-23 22:05:39 INFO  UserService:28 - Adding user
 2020-09-23 22:18:23 INFO  UserService:28 - Adding user
+2020-09-23 22:20:22 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:20:24 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:22:31 INFO  BattleService:45 - Finding all the battles
+2020-09-23 22:22:42 INFO  UserService:53 - Finding all users
+2020-09-23 22:23:47 INFO  UserService:28 - Adding user
+2020-09-23 22:24:15 INFO  UserService:28 - Adding user
+2020-09-23 22:24:29 INFO  UserService:53 - Finding all users
+2020-09-23 22:24:52 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:24:53 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:25:08 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:25:08 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:25:20 INFO  UserService:33 - Finding user by the user id
+2020-09-23 22:25:29 INFO  UserService:43 - Finding user by the username
+2020-09-23 22:26:00 INFO  BattleService:45 - Finding all the battles
+2020-09-23 22:28:41 INFO  BattleService:55 - Adding a new battle
+2020-09-23 22:51:33 INFO  BattleService:55 - Adding a new battle
+2020-09-23 22:51:48 INFO  BattleService:45 - Finding all the battles
+2020-09-23 23:02:06 INFO  BattleService:55 - Adding a new battle
+2020-09-23 23:02:35 INFO  BattleService:55 - Adding a new battle
+2020-09-23 23:03:09 INFO  BattleService:45 - Finding all the battles
+2020-09-23 23:04:07 INFO  BattleService:74 - Finding battle with id: 2
+2020-09-23 23:04:17 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:04:32 INFO  BattleService:74 - Finding battle with id: 1
+2020-09-23 23:04:41 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:05:09 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:08:00 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:08:11 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:08:31 INFO  UserService:43 - Finding user by the username
+2020-09-23 23:11:15 INFO  UserService:43 - Finding user by the username
+2020-09-23 23:11:23 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:21:31 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:21:41 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:24:43 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:28:58 INFO  BattleService:50 - Finding the user's battles
+2020-09-23 23:34:25 INFO  BattleService:50 - Finding the user's battles
+2020-09-24 00:04:24 INFO  UserService:53 - Finding all users

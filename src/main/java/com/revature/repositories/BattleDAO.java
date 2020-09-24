@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -75,7 +76,10 @@ public class BattleDAO implements IBattleDAO {
 		if (u == null) {
 			return new ArrayList<Battle>();
 		} else {
-			List<Battle> bList = s.createQuery("From battle WHERE user_id=" + u.getUserId()).list();
+			int userId = u.getUserId();
+//			Query<Battle> q = s.createQuery("FROM battle WHERE userId = :userId");
+//			q.setParameter("userId", userId);
+			List<Battle> bList = s.createQuery("FROM battle WHERE userId=" + userId, Battle.class).list();
 			// track null username
 
 //		List<Battle> allBattles = findAllBattles();
@@ -102,6 +106,14 @@ public class BattleDAO implements IBattleDAO {
 //		s.save(b);
 //		tr.commit();
 		s.saveOrUpdate(b);
+		User u = b.getUserId();
+		if (b.getOutcomes().equals("win")) {
+			u.setUserWins(u.getUserWins()+1);
+			uDao.calculateRecord(u);
+		} else if (b.getOutcomes().equals("loss")) {
+			u.setUserLosses(u.getUserLosses()+1);
+			uDao.calculateRecord(u);
+		}
 		return b;
 	}
 

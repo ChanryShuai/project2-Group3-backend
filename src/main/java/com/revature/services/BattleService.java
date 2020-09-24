@@ -55,12 +55,12 @@ public class BattleService {
 		log.info("Adding a new battle");
 		Battle b = new Battle();
 		//int battleId = bdto.battleId;
-		//String outcomes = bdto.outcomes;
-		String avatar = bdto.avatar;
-		String opponent = bdto.opponent;
-		User user= udao.selectByUserId(bdto.userId);
+		String outcomes = bdto.getOutcomes();
+		String avatar = bdto.getAvatar();
+		String opponent = bdto.getOpponent();
+		User user = udao.selectByUserId(bdto.getUserId());
 		
-		b.setOutcomes(bdao.findOutcome(bdto.battleId));
+		b.setOutcomes(outcomes);
 		b.setAvatar(avatar);
 		b.setOpponent(opponent);
 		b.setUserId(user);

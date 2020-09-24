@@ -1,17 +1,23 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*User model class: including user credentials, user info, and user win/loss records*/
 
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.revature.utils.PasswordUtil;
 
 @Component
@@ -48,11 +54,14 @@ public class User {
 	private int userLosses;
 
 	@Column(name = "user_record")
-	public double userRecord;
+	private double userRecord;
+	
 	
 	public User() {
 		super();
 	}
+
+
 
 	public User(String username, String password, String first, String last, String salt, int userWins, int userLosses) {
 		super();
@@ -92,6 +101,8 @@ public class User {
 		this.last = last;
 		this.userRecord = userRecord;
 	}
+
+	
 
 	public int getUserId() {
 		return userId;
@@ -166,7 +177,7 @@ public class User {
 		this.salt = salt;
 	}
 
-	
+
 
 	@Override
 	public int hashCode() {
@@ -185,6 +196,8 @@ public class User {
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -231,11 +244,14 @@ public class User {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", first=" + first
-				+ ", last=" + last + ", userWins=" + userWins + ", userLosses=" + userLosses + ", userRecord="
-				+ userRecord + "%]";
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", salt=" + salt
+				+ ", first=" + first + ", last=" + last + ", userWins=" + userWins + ", userLosses=" + userLosses
+				+ ", userRecord=" + userRecord + "]";
 	}
+
 
 }

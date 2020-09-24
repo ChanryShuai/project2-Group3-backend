@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 /*Battle model class: including all user battles, participants, and the userId associated to each battle*/
 
