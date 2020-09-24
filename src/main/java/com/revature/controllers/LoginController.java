@@ -2,7 +2,6 @@ package com.revature.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +16,11 @@ import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import com.revature.services.LoginService;
 import com.revature.services.UserService;
+import com.revature.utils.PasswordUtil;
 
-
-@CrossOrigin 
+@CrossOrigin
 @RestController
-@RequestMapping(value="/login")
+@RequestMapping(value = "/login")
 
 public class LoginController {
 
@@ -40,59 +39,60 @@ public class LoginController {
 		return "index";
 	}
 
-	//for registering a new user
-		@PostMapping(value="/register",
-			consumes=MediaType.APPLICATION_JSON_VALUE,
-			produces=MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<LoginDTO> addUserLogin(@RequestBody LoginDTO l) {
-			try {
-				l = lSer.addLogin(l);
-				if(l == null) {
-					return new ResponseEntity<LoginDTO>(HttpStatus.CONFLICT);
+	// for registering a new user
+	@PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<LoginDTO> addUserLogin(@RequestBody LoginDTO l) {
+		try {
+			l = lSer.addLogin(l);
+			if (l == null) {
+				return new ResponseEntity<LoginDTO>(HttpStatus.CONFLICT);
+			} else {
+				return new ResponseEntity<LoginDTO>(l, HttpStatus.CREATED);
+			}
+		} catch (NullPointerException e) {
+			return null;
+		}
+	}
+
+	// Takes in a LoginDTO object: returns it if found and null if not found
+	@PostMapping(value = "/validate", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> getUserLogin(@RequestBody LoginDTO l) {
+		try {
+			User result = uSer.findByUsername(l.getUsername());
+			if (result == null) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			} else {
+				String salt = result.getSalt();
+				String temp = PasswordUtil.generateSecurePassword(l.getPassword(), salt);
+
+				if (result.getPassword().equals(temp)) {
+					System.out.println(l);
+					User loggedInUser = uSer.findByUsername(l.getUsername());
+					return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
+				} else {
+					return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 				}
-				else {
-					return new ResponseEntity<LoginDTO>(l, HttpStatus.CREATED);
-				}
-			} catch (NullPointerException e) {
-				return null;
 			}
-		}
-		
-		// Takes in a LoginDTO object: returns it if found and null if not found
-		@PostMapping(value="/validate",
-			consumes=MediaType.APPLICATION_JSON_VALUE,
-			produces=MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<User> getUserLogin(@RequestBody LoginDTO l) {
-			try {
-			LoginDTO result = lSer.getByUsername(l.getUsername());
-			if (result.getPassword().equals(l.getPassword())) {
-				System.out.println(l);
-				User loggedInUser = uSer.findByUsername(l.getUsername());
-				return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
-			}
-			else {
-				return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-			}
-			} catch (NullPointerException e) {
-				return null;
-			}
+		} catch (NullPointerException e) {
+			return null;
 		}
 
-		public LoginService getlSer() {
-			return lSer;
-		}
+	}
 
-		public void setlSer(LoginService lSer) {
-			this.lSer = lSer;
-		}
+	public LoginService getlSer() {
+		return lSer;
+	}
 
-		public UserService getuSer() {
-			return uSer;
-		}
+	public void setlSer(LoginService lSer) {
+		this.lSer = lSer;
+	}
 
-		public void setuSer(UserService uSer) {
-			this.uSer = uSer;
-		}
-		
-		
+	public UserService getuSer() {
+		return uSer;
+	}
+
+	public void setuSer(UserService uSer) {
+		this.uSer = uSer;
+	}
+
 }

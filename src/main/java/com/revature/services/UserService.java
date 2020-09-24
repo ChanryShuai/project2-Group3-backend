@@ -58,4 +58,9 @@ public class UserService {
 		super();
 		UserService.udao = udao;
 	}
+	
+	public double calculateRecord(User u) {
+		log.info("calculating user record");
+		return udao.calculateRecord(u);
+	}
 }

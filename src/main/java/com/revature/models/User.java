@@ -68,13 +68,6 @@ public class User {
 		this.userWins = userWins;
 		this.userLosses = userLosses;
 		
-		double wins = userWins;
-		double losses = userLosses;
-		if (userLosses != 0) {
-			this.userRecord = wins/(wins+losses) * 100;
-		} else {
-			this.userRecord = 100;
-		}
 	}
 
 	public User(int userId, String username, String password, String first, String last, String salt, int userWins, int userLosses) {
@@ -90,14 +83,6 @@ public class User {
 		this.last = last;
 		this.userWins = userWins;
 		this.userLosses = userLosses;
-		
-		double wins = userWins;
-		double losses = userLosses;
-		if (userLosses != 0) {
-			this.userRecord = wins/(wins+losses) * 100;
-		} else {
-			this.userRecord = 100;
-		}
 	}
 
 	public User(int userId, String first, String last, double userRecord) {

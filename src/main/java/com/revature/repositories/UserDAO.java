@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.User;
+import com.revature.utils.PasswordUtil;
 
 @Repository
 @Transactional
@@ -51,9 +52,10 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public User insert(User u) {
 		Session s = sf.getCurrentSession();
-//		Transaction tr = s.beginTransaction();
-//		s.save(u);
-//		tr.commit();
+		String pass = u.getPassword();
+		String encode = PasswordUtil.getSalt(30);
+		u.setSalt(encode);
+		u.setPassword(PasswordUtil.generateSecurePassword(pass, encode));
 		s.saveOrUpdate(u);
 		return u;
 	}
@@ -95,6 +97,23 @@ public class UserDAO implements IUserDAO {
 		CriteriaQuery<User> cq = s.getCriteriaBuilder().createQuery(User.class);
 		cq.from(User.class);
 		return s.createQuery(cq).getResultList();
+	}
+
+	@Override
+	public double calculateRecord(User u) {
+		Session s = sf.getCurrentSession();
+		double wins = u.getUserWins();
+		double losses = u.getUserLosses();
+		double total = wins + losses;
+		double record;
+		if (total != 0) {
+			record = wins / total * 100;
+		} else {
+			record = 100;
+		}
+		u.setUserRecord(record);
+		s.update(u);
+		return record;
 	}
 	
 	

@@ -19,4 +19,6 @@ public interface IUserDAO {
 
 	public List<User> findAllUsers();
 
+	public double calculateRecord(User u);
+
 }
