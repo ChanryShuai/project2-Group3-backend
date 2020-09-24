@@ -77,9 +77,15 @@ public class BattleDAO implements IBattleDAO {
 			return new ArrayList<Battle>();
 		} else {
 			int userId = u.getUserId();
+			
+			
 //			Query<Battle> q = s.createQuery("FROM battle WHERE userId = :userId");
 //			q.setParameter("userId", userId);
-			List<Battle> bList = s.createQuery("FROM battle WHERE userId=" + userId, Battle.class).list();
+			List<Battle> userBattles = new ArrayList<Battle>();
+			
+			List<Battle> bList = s.createQuery("FROM Battle WHERE userId=" + userId, Battle.class).list();
+			userBattles.addAll(bList);
+			
 			// track null username
 
 //		List<Battle> allBattles = findAllBattles();
@@ -90,7 +96,7 @@ public class BattleDAO implements IBattleDAO {
 //			} 
 //		}
 
-			return bList;
+			return userBattles;
 		}
 
 		// return
