@@ -23,8 +23,9 @@ public class RecordController {
 	//public UserDAO udao; 
 	
 	@Autowired
-	public RecordController() {
+	public RecordController(UserService uSer) {
 		super();
+		this.uSer = uSer;
 	}
 
 	// get all user records
