@@ -104,6 +104,16 @@ public class User {
 
 	
 
+	public User(String username, String password, String first, String last) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.first = first;
+		this.last = last;
+	}
+
+
+
 	public int getUserId() {
 		return userId;
 	}

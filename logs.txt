@@ -94,3 +94,6 @@
 2020-09-24 13:54:32 INFO  BattleService:50 - Finding the user's battles
 2020-09-24 13:55:44 INFO  BattleService:50 - Finding the user's battles
 2020-09-24 13:56:55 INFO  BattleService:50 - Finding the user's battles
+2020-09-24 20:35:57 INFO  UserService:53 - Finding all users
+2020-09-24 20:40:34 INFO  BattleService:50 - Finding all the battles
+2020-09-24 20:40:48 INFO  BattleService:55 - Finding the user's battles
