@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.repositories.BattleDAO;
 import com.revature.repositories.IBattleDAO;
 import com.revature.repositories.IUserDAO;
 import com.revature.models.Battle;
@@ -27,6 +28,10 @@ public class BattleService {
 		BattleService.udao =udao;
 	}
 	
+	public BattleService(BattleDAO bdao) {
+		BattleService.bdao = bdao;
+	}
+
 	public void findOutcome(int battleId) {
 		log.info("Finding the battle outcome");
 		bdao.findOutcome(battleId);

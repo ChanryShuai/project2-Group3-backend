@@ -19,21 +19,16 @@ public class BattleServiceTest {
 	BattleDAO bdaoMock = (BattleDAO) mock(IBattleDAO.class);
 	BattleService bSerMock = new BattleService(bdaoMock);
 	
-//	@Test
-//	public void testFindOutcome() {
-//		Battle b = new Battle();
-//		b.setBattleId(3);
-//		
-//		Superhero avatar = new Superhero();
-//		Superhero opponent = new Superhero();
-//		b.setAvatarId(avatar);
-//		b.setOpponentId(opponent);
-//		
-//		User u = new User();
-//		b.setUserId(u);
-//		b.setOutcomes("win");
-//		assertEquals(b.getOutcomes(), bSerMock.findOutcome(3).getOutcomes());
-//	}
+	@Test
+	public void testFindOutcome() {
+		Battle b = new Battle();
+		b.setBattleId(10);
+		
+		User u = new User();
+		b.setUserId(u);
+		b.setOutcomes("win");
+		assertEquals(b.getOutcomes(), bdaoMock.findOutcome(10));
+	}
 	
 	@Test
 	public void testUpdateBattleTrue() {
@@ -45,6 +40,23 @@ public class BattleServiceTest {
 		
 	}
 	
+	@Test
+	public void testFindAllBattles() {
+		
+	}
 	
+	@Test
+	public void testFindBattlesByUser() {
+		
+	}
 
+	@Test
+	public void testAddBattle() {
+		
+	}
+	
+	@Test
+	public void getBattleById() {
+		
+	}
 }
